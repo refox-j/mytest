@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.cate {
+  display: flex;
+}
+.cate .cate_nav {
+  width: 120px;
+  line-height: 60px;
+  text-align: center;
+}
+.cate .cate_nav.active {
+  background-color: #fff;
+  position: relative;
+}
+.cate .cate_nav.active::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #c00000;
+  width: 3px;
+  height: 30px;
+  top: 50%;
+  left: 2px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.cate .leveltwo {
+  line-height: 60px;
+  background-color: #fff;
+  text-align: center;
+}
+.cate .levelthree {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cate .levelthree .it {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cate .levelthree text {
+  font-size: 12px;
+}
+

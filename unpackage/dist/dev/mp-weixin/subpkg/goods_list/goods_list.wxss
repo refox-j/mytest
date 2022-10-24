@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.list_box {
+  display: flex;
+  margin-top: 10px;
+  border-bottom: 1px solid gray;
+}
+.list_box image {
+  width: 100px;
+  height: 100px;
+}
+.list_box text {
+  color: #c00000;
+}
+
