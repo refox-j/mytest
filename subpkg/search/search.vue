@@ -11,9 +11,7 @@
 				<uni-icons type="trash" size="20"></uni-icons>
 			</view>
 			<view class="bottom">
-				<text>abc</text>
-				<text>add</text>
-				<text>bsds</text>
+				<text v-for="(item,index) in hisList" :key="index">{{item}}</text>
 			</view>
 		</view>
 		<!-- 列表区域 -->
@@ -27,6 +25,7 @@
 	</view>
 </template>
 <script>
+	import {mapState,mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -37,22 +36,27 @@
 			};
 		},
 		methods:{
+			...mapMutations(['addHisList']),
 			// 输入内容 搜索 （设置防抖）
 			input(query){
 				// 防抖的逻辑代码
 				// 当有定时器在执行时 则清除掉
 				this.timer && clearTimeout(this.timer)
 				// 防抖的逻辑代码
-				// 0.5秒后 执行调用接口的方法 并将返回的对象赋值给timer变量
+				// 0.5秒后 执行调用接口的方法 并将返回的定时器对象赋值给timer变量
 				this.timer = setTimeout(()=>{
 					this.getShopList(query)
 				},500)
 			},
 			async getShopList(query){
 				let {data:res} = await uni.$http.get('/goods/qsearch',{query})
-				console.log(res)
+				// 在请求成功后添加搜索历史记录
+				this.addHisList(query)
 				this.shopList = res.message
 			}
+		},
+		computed:{
+			...mapState(['hisList']),
 		}
 	}
 </script>

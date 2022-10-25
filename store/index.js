@@ -9,13 +9,27 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state:{
 		// 购物车 数据 (本地存储中读取 如果没有 为 空数组)
-		carts:JSON.parse(uni.getStorageSync('carts') || '[]')
+		carts:JSON.parse(uni.getStorageSync('carts') || '[]'),
+		// 搜索历史 数据 (本地存储中读取 如果没有 为 空数组)
+		hisList:JSON.parse(uni.getStorageSync('hisList') || '[]'),
 	},
 	mutations:{
 		// 持久化方法
 		saveCarts(state){
 			// 小程序的本地存储方法 (注意数据要是 json 格式的)
 			uni.setStorageSync('carts',JSON.stringify(state.carts))
+			uni.setStorageSync('hisList',JSON.stringify(state.hisList))
+		},
+		// 添加搜索历史方法
+		addHisList(state,value){
+			// 通过 new Set 构造函数 数组去重
+			let myset = new Set(state.hisList)
+			// Array.from 类数组转换成真实数据
+			state.hisList = Array.from(myset)
+			// 搜索历史 头部添加一条数据
+			state.hisList.unshift(value)
+			
+			this.commit('saveCarts')
 		},
 		//购物车添加数据的方法
 		add(state,value){
