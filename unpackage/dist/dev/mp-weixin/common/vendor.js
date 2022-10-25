@@ -2810,6 +2810,10 @@ var _default = new _vuex.default.Store({
 
       this.commit('saveCarts');
     },
+    // 清空搜索历史记录
+    clearHis: function clearHis(state) {
+      state.hisList = [];
+    },
     //购物车添加数据的方法
     add: function add(state, value) {
       //购物车商品 添加逻辑判断

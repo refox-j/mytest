@@ -31,6 +31,10 @@ export default new Vuex.Store({
 			
 			this.commit('saveCarts')
 		},
+		// 清空搜索历史记录
+		clearHis(state){
+			state.hisList = []
+		},
 		//购物车添加数据的方法
 		add(state,value){
 			//购物车商品 添加逻辑判断

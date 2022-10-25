@@ -8,7 +8,7 @@
 		<view v-if="shopList.length==0 || !shopList">
 			<view class="middle">
 				<text>搜索历史</text>
-				<uni-icons type="trash" size="20"></uni-icons>
+				<uni-icons type="trash" size="20" @click="clearHis"></uni-icons>
 			</view>
 			<view class="bottom">
 				<text v-for="(item,index) in hisList" :key="index">{{item}}</text>
@@ -36,7 +36,7 @@
 			};
 		},
 		methods:{
-			...mapMutations(['addHisList']),
+			...mapMutations(['addHisList','clearHis']),
 			// 输入内容 搜索 （设置防抖）
 			input(query){
 				// 防抖的逻辑代码

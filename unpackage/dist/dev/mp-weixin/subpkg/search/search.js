@@ -196,7 +196,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
 
   },
   methods: _objectSpread(_objectSpread({},
-  (0, _vuex.mapMutations)(['addHisList'])), {}, {
+  (0, _vuex.mapMutations)(['addHisList', 'clearHis'])), {}, {
     // 输入内容 搜索 （设置防抖）
     input: function input(query) {var _this = this;
       // 防抖的逻辑代码
